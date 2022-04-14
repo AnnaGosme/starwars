@@ -1,50 +1,39 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { Card } from "react-bootstrap";
+import { Figure, Button } from "react-bootstrap";
 
 import FilmPoster from "./FilmPoster";
 import FilmDescription from "./FilmDescription";
-import AddToFavs from "../favorites/Buttons/AddToFavs";
 
-function FilmContainer() {
-  const [films, setFilms] = useState({});
-
-  function fetchStarWarsFilms() {
-    axios
-      .get("https://swapi.dev/api/films/")
-      .then((res) => {
-        setFilms(res.data.results);
-      })
-      .catch((error) =>
-        console.log(`Error fetching Starwars movies: ${error}`)
-      );
-  }
-
-  useEffect(() => {
-    fetchStarWarsFilms();
-  }, []);
-
-  const filmsArr = Object.values(films);
-
+function FilmContainer({ filmsArr, favoriteFilms }) {
   return (
     <>
       FILM CONTAINER
       {filmsArr.map((film) => {
         return (
-          <div key={film.id}>
-            <h1>{film.name}</h1>
-            <div className="container">
-              <FilmPoster poster={film.poster} />
-              <Card>
-                <FilmDescription
-                  description={film.opening_crawl}
-                  director={film.director}
-                  characters={film.characters}
-                />
-                <AddToFavs />
-              </Card>
+          <Figure>
+            <div key={film.episode_id}>
+              <h1>{film.name}</h1>
+              <div className="container">
+                <FilmPoster poster="https://lumiere-a.akamaihd.net/v1/images/622667eb0644dc0001a081fd-image_84d35559.jpeg?region=336%2C0%2C864%2C864" />
+                <Figure.Caption>
+                  <FilmDescription
+                    description={film.opening_crawl}
+                    director={film.director}
+                    characters={film.characters}
+                  />
+                  <Button
+                    onClick={() => {
+                      if (!favoriteFilms.includes(film)) {
+                        favoriteFilms.push(film);
+                      }
+                      console.log("favorite films array", favoriteFilms);
+                    }}
+                  >
+                    Add to Favorites
+                  </Button>
+                </Figure.Caption>
+              </div>
             </div>
-          </div>
+          </Figure>
         );
       })}
     </>

@@ -1,11 +1,11 @@
-import {Image} from 'react-bootstrap'
+import { Figure } from "react-bootstrap";
 
-function CharacterPoster({portrait}) {
-    return (
-        <>
-        <Image src={portrait} alt="portrait"></Image>
-        </>
-    )
+function CharacterPoster({ portrait }) {
+  return (
+    <>
+      <Figure.Image width={171} src={portrait} alt="portrait"></Figure.Image>
+    </>
+  );
 }
 
 export default CharacterPoster;

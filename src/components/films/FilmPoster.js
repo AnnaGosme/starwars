@@ -1,13 +1,8 @@
-import {Image} from 'react-bootstrap'
+import { Figure } from "react-bootstrap";
 
-function FilmPoster({poster}) {
-    return (
-        <Image
-      className="thumbnail"
-      src={poster}
-      alt="Star Wars"
-      ></Image>
-    )
-};
+function FilmPoster({ poster }) {
+  return <Figure.Image width={171}
+   src={poster} alt="Star Wars"></Figure.Image>;
+}
 
 export default FilmPoster;

@@ -1,44 +1,44 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { Figure, Button } from "react-bootstrap";
 
 import CharacterDescription from "./CharacterDescription";
 import CharacterPoster from "./CharacterPoster";
-import AddToFavs from "../favorites/Buttons/AddToFavs";
 
-function CharacterContainer() {
-  const [people, setPeople] = useState([]);
-
-  const fetchPeople = () => {
-    axios
-      .get("https://swapi.dev/api/people/")
-      .then((res) => {
-        setPeople(res.data.results);
-      })
-      .catch((error) =>
-        console.log(`Error fetching Starwars characters: ${error}`)
-      );
-  };
-
-  useEffect(() => {
-    fetchPeople();
-  }, []);
-
+function CharacterContainer({ people, favoritePeople }) {
+  const favoritePeopleArr = Object.values(favoritePeople);
   return (
     <div className="container">
       CHARACTER CONTAINER
-      {people.map((character) => {
+      {people.map((person) => {
         return (
-          <div key={character.name}>
-            <h2>{character.name}</h2>
-            <CharacterPoster portrait={character.portrait} />
-            <CharacterDescription
-              mass={character.mass}
-              height={character.height}
-              homePlanet={character.home_planet}
-              films={character.films}
-            />
-            <AddToFavs />
-          </div>
+          <Figure>
+            <div key={person.name}>
+              <h2>{person.name}</h2>
+              <CharacterPoster
+                portrait={
+                  "https://i.pinimg.com/564x/56/a6/c3/56a6c3ad6df40af7583d2536e12639e5.jpg"
+                }
+              />
+              <CharacterDescription
+                mass={person.mass}
+                height={person.height}
+                homeworld={person.homeworld}
+                films={person.films}
+              />
+              <Button
+                onClick={() => {
+                  if (!favoritePeopleArr.includes(person)) {
+                    favoritePeopleArr.push(person);
+                  }
+                  console.log(
+                    "added to favorite people array",
+                    favoritePeopleArr
+                  );
+                }}
+              >
+                Add to Favorites
+              </Button>
+            </div>
+          </Figure>
         );
       })}
     </div>
