@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+import "./App.css";
+import FilmContainer from "./components/films/FilmContainer";
+import CharacterContainer from "./components/characters/CharacterContainer";
+import FavoritesContainer from "./components/Favorites/Favorited/FavoritesContainer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Films</Link>
+          </li>
+          <li>
+            <Link to="/characters">Characters</Link>
+          </li>
+          <li>
+            <Link to="/favorites">Favorites</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/favorites">
+          <FavoritesContainer />
+        </Route>
+        <Route path="/characters">
+          <CharacterContainer />
+        </Route>
+        <Route path="/">
+          <FilmContainer />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
