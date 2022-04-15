@@ -5,9 +5,9 @@ import CharacterPoster from "./CharacterPoster";
 
 function CharacterContainer({ people, favoritePeople }) {
   const favoritePeopleArr = Object.values(favoritePeople);
+  console.log("favoritePeopleArr", favoritePeopleArr);
   return (
     <div className="container">
-      CHARACTER CONTAINER
       {people.map((person) => {
         return (
           <Figure>

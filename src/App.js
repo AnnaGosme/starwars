@@ -14,42 +14,19 @@ function App() {
   const favoriteFilms = [];
   const favoritePeople = [];
 
-  function fetchStarWarsFilms() {
+  function fetch(url, setArray) {
     axios
-      .get("https://swapi.dev/api/films/")
+      .get(url)
       .then((res) => {
-        setFilms(res.data.results);
+        setArray(res.data.results);
       })
-      .catch((error) =>
-        console.log(`Error fetching Starwars movies: ${error}`)
-      );
-  }
-  function fetchPeople() {
-    axios
-      .get("https://swapi.dev/api/people/")
-      .then((res) => {
-        setPeople(res.data.results);
-      })
-      .catch((error) =>
-        console.log(`Error fetching Starwars characters: ${error}`)
-      );
-  }
-
-  function fetchPlanets() {
-    axios
-      .get("https://swapi.dev/api/planets/")
-      .then((res) => {
-        setPlanets(res.data.results);
-      })
-      .catch((error) =>
-        console.log(`Error fetching Starwars characters: ${error}`)
-      );
+      .catch((error) => console.log(`Error fetching: ${error}`));
   }
 
   useEffect(() => {
-    fetchStarWarsFilms();
-    fetchPeople();
-    fetchPlanets();
+    fetch("https://swapi.dev/api/films/", setFilms);
+    fetch("https://swapi.dev/api/people/", setPeople);
+    fetch("https://swapi.dev/api/planets/", setPlanets);
   }, []);
 
   const filmsArr = Object.values(films);

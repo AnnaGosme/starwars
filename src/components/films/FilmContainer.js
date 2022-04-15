@@ -3,6 +3,7 @@ import { Figure, Button } from "react-bootstrap";
 import FilmPoster from "./FilmPoster";
 import FilmDescription from "./FilmDescription";
 import FilmCharacters from "./FilmCharacters";
+import helpers from "../../helpers/helpers";
 
 function FilmContainer({ filmsArr, favoriteFilms, people, favoritePeople }) {
   return (
@@ -17,13 +18,7 @@ function FilmContainer({ filmsArr, favoriteFilms, people, favoritePeople }) {
                 <div className="container">
                   <FilmPoster poster="https://lumiere-a.akamaihd.net/v1/images/622667eb0644dc0001a081fd-image_84d35559.jpeg?region=336%2C0%2C864%2C864" />
                   <Figure.Caption>
-                    <Button
-                      onClick={() => {
-                        if (!favoriteFilms.includes(film)) {
-                          favoriteFilms.push(film);
-                        }
-                      }}
-                    >
+                    <Button onClick={helpers.addFav(favoriteFilms, film)}>
                       Add to Favorites
                     </Button>
                     <FilmDescription

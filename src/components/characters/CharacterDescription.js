@@ -1,11 +1,11 @@
-function CharacterDescription(person, homeworld) {
+function CharacterDescription({ person, mass, height, homeworld, films }) {
   return (
     <>
-      <h2>{person.name}</h2>
-      <p>Home Planet: {person.homeworld}</p>
-      <p>Height: {person.height} cm</p>
-      <p>Weight: {person.mass} kg</p>
-      <p>Films: {person.films}</p>
+      <h2>{person}</h2>
+      <li>Home planet: {homeworld}</li>
+      <li>Height: {height} cm</li>
+      <li>Mass: {mass} kg</li>
+      <li>Films: {films}</li>
     </>
   );
 }
