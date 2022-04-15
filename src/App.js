@@ -53,8 +53,8 @@ function App() {
   }, []);
 
   const filmsArr = Object.values(films);
-  console.log("fav peopple in App", favoritePeople);
-  console.log("fav films in App", favoriteFilms);
+  // console.log("fav peopple in App", favoritePeople);
+  // console.log("fav films in App", favoriteFilms);
 
   return (
     <div className="App">
@@ -103,6 +103,8 @@ function App() {
               <FilmContainer
                 filmsArr={filmsArr}
                 favoriteFilms={favoriteFilms}
+                favoritePeople={favoritePeople}
+                people={people}
               />
             }
           ></Route>
