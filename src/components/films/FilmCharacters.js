@@ -10,28 +10,31 @@ import CharacterDescription from "../characters/CharacterDescription";
 import CharacterContainer from "../characters/CharacterContainer";
 
 import helpers from "../../helpers/helpers";
+import charactersPortraits from "../../assets/characters/characters";
 
-function FilmCharacters({ characters, people, favoritePeople }) {
+function FilmCharacters({ filmCharacters, people, favoritePeople, planets }) {
   const [openModal, setOpenModal] = useState(false);
   const [person, setPerson] = useState(null);
 
-  const peopleArr = people.map((person) => person);
-
   const finalArr = [];
-  function findFilmCharacters() {
-    for (let i = 0; i < characters.length; i++) {
-      for (let j = 0; j < peopleArr.length; j++) {
-        if (characters[i] === peopleArr[j].url) {
-          finalArr.push(Object.values(peopleArr[j]));
+
+  helpers.matchInfo("url", filmCharacters, people, finalArr);
+
+  console.log("finalArr", finalArr);
+  console.log("planets", planets);
+
+  function matchInfo(arr1, arr2, finalArr) {
+    for (let i = 0; i < arr1.length; i++) {
+      for (let j = 0; j < arr2.length; j++) {
+        if (arr1[i] == arr2[j].url) {
+          finalArr.push(arr2[j]);
         }
       }
     }
+    return finalArr;
   }
 
-  findFilmCharacters();
-
   const onClickOpenModal = (p) => {
-    console.log("modal clicked for this person", p)
     setPerson(p);
     setOpenModal(true);
   };
@@ -41,25 +44,47 @@ function FilmCharacters({ characters, people, favoritePeople }) {
   return (
     <>
       <div className="container">
-        {finalArr.map((p) => (
+        {finalArr.map((person) => (
           <>
-          <div className="temp_solution">
-            <div>
-              <Button onClick={() => onClickOpenModal(p)}>{p[0]}</Button>
+            <div className="temp_solution">
+              <div>
+                <Button
+                  variant="warning"
+                  onClick={() => {
+                    onClickOpenModal(person);
+                    console.log("open modal");
+                  }}
+                >
+                  {person.name}
+                </Button>
+              </div>
+              {/* {charactersPortraits.name.indexOf(p)} */}
+              <CharacterPoster />
+              <div>
+                <p>
+                  Homeworld:{" "}
+                  {planets.map(function (planet) {
+                    if (planet.url === person.homeworld) {
+                      console.log(`${person.name} comes from ${planet.name}`);
+                      return <>{planet.name}</>;
+                    }
+                  })}
+                </p>
+
+                <p>Height: {person.height} cm</p>
+                <p>Mass: {person.mass} kg</p>
+                <p>Gender: {person.gender}</p>
+              </div>
             </div>
-          <CharacterPoster />
-          <div>
-          <p>Home planet: {p[9]}</p>
-          <p>Height: {p[1]} cm</p>
-          <p>Mass: {p[2]} kg</p>
-          <p>Gender: {p[7]}</p>
-          </div>
-        </div>
           </>
         ))}
-      <PeopleModal person={finalArr.map(p => p)} openModal={openModal} onClickCloseModal={onClickCloseModal} favoritePeople={favoritePeople}/>
+        <PeopleModal
+          person={finalArr.map((person) => person)}
+          openModal={openModal}
+          onClickCloseModal={onClickCloseModal}
+          favoritePeople={favoritePeople}
+        />
       </div>
-      
     </>
   );
 }

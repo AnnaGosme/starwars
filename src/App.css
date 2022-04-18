@@ -1,8 +1,17 @@
+* {
+  background-color: black;
+  color: #fff
+}
+
 .App {
   text-align: justify;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.poster {
+  border-radius: 10px;
 }
 
 .container {
@@ -13,9 +22,7 @@
   align-items: center;
 }
 
-li {
-  list-style: none;
-}
+
 
 
 

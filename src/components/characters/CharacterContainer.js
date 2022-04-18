@@ -3,6 +3,8 @@ import { Figure, Button } from "react-bootstrap";
 import CharacterDescription from "./CharacterDescription";
 import CharacterPoster from "./CharacterPoster";
 
+import helpers from "../../helpers/helpers";
+
 function CharacterContainer({ people, favoritePeople }) {
   const favoritePeopleArr = Object.values(favoritePeople);
   console.log("favoritePeopleArr", favoritePeopleArr);
@@ -20,17 +22,7 @@ function CharacterContainer({ people, favoritePeople }) {
                 homeworld={person.homeworld}
                 films={person.films}
               />
-              <Button
-                onClick={() => {
-                  if (!favoritePeopleArr.includes(person)) {
-                    favoritePeopleArr.push(person);
-                  }
-                  console.log(
-                    "added to favorite people array",
-                    favoritePeopleArr
-                  );
-                }}
-              >
+              <Button variant="warning" onClick={helpers.addFav(favoritePeopleArr, person)}>
                 Add to Favorites
               </Button>
             </div>

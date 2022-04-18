@@ -3,9 +3,12 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 
 import "./App.css";
+import NavBar from "./NavBar";
 import FilmContainer from "./components/films/FilmContainer";
 import CharacterContainer from "./components/characters/CharacterContainer";
 import FavoritesContainer from "./components/favorites/Favorited/FavoritesContainer";
+
+import Test from "./components/films/Testing";
 
 function App() {
   const [films, setFilms] = useState({});
@@ -30,27 +33,14 @@ function App() {
   }, []);
 
   const filmsArr = Object.values(films);
-  // console.log("fav peopple in App", favoritePeople);
-  // console.log("fav films in App", favoriteFilms);
 
   return (
     <div className="App">
+      {/* <Test people={people} films={films}/> */}
       <h1>STAR WARS</h1>
       <h1>the films</h1>
       <Router>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Films</Link>
-            </li>
-            <li>
-              <Link to="/characters">Characters</Link>
-            </li>
-            <li>
-              <Link to="/favorites">Favorites</Link>
-            </li>
-          </ul>
-        </nav>
+        <NavBar />
         <Routes>
           <Route
             exact
@@ -82,6 +72,7 @@ function App() {
                 favoriteFilms={favoriteFilms}
                 favoritePeople={favoritePeople}
                 people={people}
+                planets={planets}
               />
             }
           ></Route>
