@@ -5,9 +5,6 @@ import axios from "axios";
 import { Accordion, Button, Card, Modal, Image } from "react-bootstrap";
 
 import PeopleModal from "../../helpers/PeopleModal";
-import CharacterPoster from "../characters/CharacterPoster";
-import CharacterDescription from "../characters/CharacterDescription";
-import CharacterContainer from "../characters/CharacterContainer";
 
 import helpers from "../../helpers/helpers";
 import charactersPortraits from "../../assets/characters/characters";
@@ -19,20 +16,6 @@ function FilmCharacters({ filmCharacters, people, favoritePeople, planets }) {
   const finalArr = [];
 
   helpers.matchInfo("url", filmCharacters, people, finalArr);
-
-  console.log("finalArr", finalArr);
-  console.log("planets", planets);
-
-  function matchInfo(arr1, arr2, finalArr) {
-    for (let i = 0; i < arr1.length; i++) {
-      for (let j = 0; j < arr2.length; j++) {
-        if (arr1[i] == arr2[j].url) {
-          finalArr.push(arr2[j]);
-        }
-      }
-    }
-    return finalArr;
-  }
 
   const onClickOpenModal = (p) => {
     setPerson(p);
@@ -47,9 +30,21 @@ function FilmCharacters({ filmCharacters, people, favoritePeople, planets }) {
         {finalArr.map((person) => (
           <>
             <div className="temp_solution">
-              <div>
+              <div className="container_column">
+                {charactersPortraits.map(function (filmCharacter) {
+                  if (filmCharacter.name === person.name) {
+                    return (
+                      <img
+                        className="poster"
+                        width={100}
+                        src={filmCharacter.portrait}
+                        alt={filmCharacter.name}
+                      />
+                    );
+                  }
+                })}
                 <Button
-                  variant="warning"
+                  variant="dark"
                   onClick={() => {
                     onClickOpenModal(person);
                     console.log("open modal");
@@ -58,14 +53,11 @@ function FilmCharacters({ filmCharacters, people, favoritePeople, planets }) {
                   {person.name}
                 </Button>
               </div>
-              {/* {charactersPortraits.name.indexOf(p)} */}
-              <CharacterPoster />
               <div>
                 <p>
                   Homeworld:{" "}
                   {planets.map(function (planet) {
                     if (planet.url === person.homeworld) {
-                      console.log(`${person.name} comes from ${planet.name}`);
                       return <>{planet.name}</>;
                     }
                   })}

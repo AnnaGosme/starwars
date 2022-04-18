@@ -5,10 +5,8 @@ import axios from "axios";
 import "./App.css";
 import NavBar from "./NavBar";
 import FilmContainer from "./components/films/FilmContainer";
-import CharacterContainer from "./components/characters/CharacterContainer";
 import FavoritesContainer from "./components/favorites/Favorited/FavoritesContainer";
-
-import Test from "./components/films/Testing";
+import logo from "./assets/logo.jpg";
 
 function App() {
   const [films, setFilms] = useState({});
@@ -36,8 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Test people={people} films={films}/> */}
-      <h1>STAR WARS</h1>
+      <img src={logo} alt="Star Wars"></img>
       <h1>the films</h1>
       <Router>
         <NavBar />
@@ -52,17 +49,7 @@ function App() {
               />
             }
           ></Route>
-          <Route
-            exact
-            path="/characters"
-            element={
-              <CharacterContainer
-                favoritePeople={favoritePeople}
-                people={people}
-                homeworld={planets}
-              />
-            }
-          ></Route>
+
           <Route
             exact
             path="/"

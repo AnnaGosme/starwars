@@ -3,6 +3,7 @@
   color: #fff
 }
 
+
 .App {
   text-align: justify;
   display: flex;
@@ -17,6 +18,14 @@
 .container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container_column {
+  display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
