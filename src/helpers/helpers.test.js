@@ -6,7 +6,7 @@ describe("helpers.matchInfo", () => {
   const finalArr = [];
   const expected = [{url: 1}, {url: 2}, {url: 4}];
   it("should return array with only matching elements", () => {
-    expect(helpers.matchInfo(arr1, arr2, finalArr)).toEqual(expected);
+    expect(helpers.matchInfo("url", arr1, arr2, finalArr)).toEqual(expected);
   });
 });
 

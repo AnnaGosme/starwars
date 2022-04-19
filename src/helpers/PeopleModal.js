@@ -3,7 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 import helpers from "./helpers";
 
 function PeopleModal({ person, openModal, onClickCloseModal, favoritePeople }) {
-  console.log("person", person);
+
   return (
     <>
       {person.map((p) => {

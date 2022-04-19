@@ -1,9 +1,9 @@
-import { Card, Figure, Button } from "react-bootstrap";
+import { useState } from "react";
+import { Card, Button, Carousel } from "react-bootstrap";
 
-import FilmPoster from "./FilmPoster";
-import FilmDescription from "./FilmDescription";
 import FilmCharacters from "./FilmCharacters";
-import filmPosters from "../../assets/films/films";
+import FilmDescription from "./FilmDescription";
+
 import helpers from "../../helpers/helpers";
 
 function FilmContainer({
@@ -13,53 +13,51 @@ function FilmContainer({
   people,
   favoritePeople,
 }) {
+  const [index, setIndex] = useState(0);
+  const [favorites, setFavorites] = useState([]);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
+
+  const addToFavorites = (film) => {
+    setFavorites((prevFavourites) => [...prevFavourites, film]);
+    console.log("its work?");
+  };
+
   return (
     <>
-      {filmsArr.map((film) => {
-        return (
-          <Card body>
-            <Figure>
-            <h1>{film.title}</h1>
-              <div className="container">
-                {filmPosters.map(function (filmPoster) {
-                  if (filmPoster.ep === film.episode_id) {
-                    return (
-                      <Figure.Image
-                        className="poster"
-                        width={400}
-                        src={filmPoster.poster}
-                        alt={filmPoster.title}
-                      ></Figure.Image>
-                    );
-                  }
-                })}
-                <div key={film.episode_id}>
-                  
-                    
-                    <h3>Director: {film.director}</h3>
+      <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
+        {filmsArr.map((film) => {
+          return (
+            <Carousel.Item>
+              <Card body>
+                <div className="container">
+                  <FilmDescription
+                    filmTitle={film.title}
+                    filmId={film.episode_id}
+                    filmDirector={film.director}
+                    filmCrawl={film.opening_crawl}
+                  />
                   <Button
                     variant="danger"
-                    onClick={helpers.addFav(favoriteFilms, film)}
-                    >
+                    onClick={() => helpers.addFav(favoriteFilms, film)}
+                  >
                     Add to Favorites
                   </Button>
-                    
 
-                  <Figure.Caption>
-                    <FilmDescription description={film.opening_crawl} />
-                    <FilmCharacters
-                      filmCharacters={film.characters}
-                      people={people}
-                      favoritePeople={favoritePeople}
-                      planets={planets}
-                    />
-                  </Figure.Caption>
+                  <FilmCharacters
+                    filmCharacters={film.characters}
+                    people={people}
+                    favoritePeople={favoritePeople}
+                    planets={planets}
+                  />
                 </div>
-              </div>
-            </Figure>
-          </Card>
-        );
-      })}
+              </Card>
+            </Carousel.Item>
+          );
+        })}
+      </Carousel>
     </>
   );
 }

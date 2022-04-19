@@ -1,44 +1,44 @@
-const charactersPortraits = [
+const charactersPosters = [
   {
     name: "Luke Skywalker",
-    portrait: require("../../assets/characters/lukeskywalker.jpg"),
+    poster: require("../../assets/characters/lukeskywalker.jpg"),
   },
   {
     name: "C-3PO",
-    portrait: require("../../assets/characters/cp30.jpg"),
+    poster: require("../../assets/characters/cp30.jpg"),
   },
   {
-    name: "R2_D2",
-    portrait: require("../../assets/characters/R2D2.jpg"),
+    name: "R2-D2",
+    poster: require("../../assets/characters/R5D4.jpg"),
   },
   {
     name: "Darth Vader",
-    portrait: require("../../assets/characters/vader.jpg"),
+    poster: require("../../assets/characters/vader.jpg"),
   },
   {
     name: "Leia Organa",
-    portrait: require("../../assets/characters/leia.jpg"),
+    poster: require("../../assets/characters/leia.jpg"),
   },
   {
     name: "Owen Lars",
-    portrait: require("../../"),
+    poster: require("../../assets/characters/ownlars.jpg"),
   },
   {
     name: "Beru Whitesun lars",
-    portrait: require("../../"),
+    poster: require("../../assets/characters/ownlars.jpg"),
   },
   {
     name: "R5-D4",
-    portrait: require("../../assets/characters/R5D4.jpg"),
+    poster: require("../../assets/characters/R5D4.jpg"),
   },
   {
     name: "Biggs Darklighter",
-    portrait: require("../../"),
+    poster: require("../../assets/characters/biggsdarklighter.jpg"),
   },
   {
     name: "Obi-Wan Kenobi",
-    portrait: require("../../assets/characters/obiwankenobi.jpg"),
+    poster: require("../../assets/characters/obiwankenobi.jpg"),
   },
 ];
 
-export default charactersPortraits;
+export default charactersPosters;

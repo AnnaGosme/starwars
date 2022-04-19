@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+
 * {
   background-color: black;
+  font-family: 'Didact Gothic', sans-serif;
   color: #fff
 }
-
 
 .App {
   text-align: justify;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
 }
@@ -27,9 +30,14 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
+
+.carousel-indicators{
+  margin-top: 10px;;
+}
+
 
 
 

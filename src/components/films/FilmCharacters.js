@@ -1,83 +1,65 @@
-import { useEffect, useState } from "react";
-
-import axios from "axios";
-
-import { Accordion, Button, Card, Modal, Image } from "react-bootstrap";
-
-import PeopleModal from "../../helpers/PeopleModal";
+import { Accordion, Button, Card } from "react-bootstrap";
 
 import helpers from "../../helpers/helpers";
-import charactersPortraits from "../../assets/characters/characters";
+import charactersPosters from "../../assets/characters/characters";
 
 function FilmCharacters({ filmCharacters, people, favoritePeople, planets }) {
-  const [openModal, setOpenModal] = useState(false);
-  const [person, setPerson] = useState(null);
+  const peopleArr = [];
+  helpers.matchInfo("url", filmCharacters, people, peopleArr);
 
-  const finalArr = [];
-
-  helpers.matchInfo("url", filmCharacters, people, finalArr);
-
-  const onClickOpenModal = (p) => {
-    setPerson(p);
-    setOpenModal(true);
-  };
-
-  const onClickCloseModal = () => setOpenModal(false);
+  function addFav(array, fav) {
+    if (!array.includes(fav)) {
+      array.push(fav);
+      return array;
+    }
+  }
 
   return (
-    <>
-      <div className="container">
-        {finalArr.map((person) => (
-          <>
-            <div className="temp_solution">
-              <div className="container_column">
-                {charactersPortraits.map(function (filmCharacter) {
-                  if (filmCharacter.name === person.name) {
-                    return (
-                      <img
-                        className="poster"
-                        width={100}
-                        src={filmCharacter.portrait}
-                        alt={filmCharacter.name}
-                      />
-                    );
-                  }
-                })}
-                <Button
-                  variant="dark"
-                  onClick={() => {
-                    onClickOpenModal(person);
-                    console.log("open modal");
-                  }}
-                >
-                  {person.name}
-                </Button>
-              </div>
-              <div>
-                <p>
-                  Homeworld:{" "}
-                  {planets.map(function (planet) {
-                    if (planet.url === person.homeworld) {
-                      return <>{planet.name}</>;
-                    }
-                  })}
-                </p>
-
-                <p>Height: {person.height} cm</p>
-                <p>Mass: {person.mass} kg</p>
-                <p>Gender: {person.gender}</p>
-              </div>
-            </div>
-          </>
-        ))}
-        <PeopleModal
-          person={finalArr.map((person) => person)}
-          openModal={openModal}
-          onClickCloseModal={onClickCloseModal}
-          favoritePeople={favoritePeople}
-        />
-      </div>
-    </>
+    <div className="container container-fluid">
+      {peopleArr.map((person) => (
+        <>
+          <Accordion flush>
+            <Card style={{ margin: "5px", width: "200px" }}>
+              <Accordion.Item eventKey={person.name}>
+                <Accordion.Header style={{ margin: "5px" }}>
+                  {person.name}{" "}
+                </Accordion.Header>
+                <Accordion.Body>
+                  <div>
+                    {charactersPosters.map(function (filmCharacter) {
+                      if (filmCharacter.name === person.name) {
+                        return (
+                          <img
+                            className="poster"
+                            width={100}
+                            src={filmCharacter.poster}
+                            alt={filmCharacter.name}
+                          />
+                        );
+                      }
+                    })}
+                    <p>
+                      Homeworld:{" "}
+                      {planets.map(function (planet) {
+                        if (planet.url === person.homeworld) {
+                          return <>{planet.name}</>;
+                        }
+                      })}
+                    </p>
+                    <p>Height: {person.height} cm</p>
+                    <p>Mass: {person.mass} kg</p>
+                    <p>Gender: {person.gender}</p>
+                    <Button variant="warning" onClick={() => addFav(favoritePeople, person)}>
+                      Add to favorites
+                    </Button>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Card>
+          </Accordion>
+        </>
+      ))}
+    </div>
   );
 }
 
