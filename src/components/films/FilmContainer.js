@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, Button, Carousel } from "react-bootstrap";
+import { Card, Button, Carousel, Container, Row, Col } from "react-bootstrap";
 
 import FilmCharacters from "./FilmCharacters";
 import FilmDescription from "./FilmDescription";
@@ -31,29 +31,36 @@ function FilmContainer({
         {filmsArr.map((film) => {
           return (
             <Carousel.Item>
+                <Container>
               <Card body>
-                <div className="container">
+                <Row>
                   <FilmDescription
                     filmTitle={film.title}
                     filmId={film.episode_id}
                     filmDirector={film.director}
                     filmCrawl={film.opening_crawl}
                   />
+                  </Row>
+                  <Row>
+                    <Col>
                   <Button
                     variant="danger"
                     onClick={() => helpers.addFav(favoriteFilms, film)}
                   >
                     Add to Favorites
                   </Button>
-
+                  </Col>
+                  </Row>
+            <Row>
                   <FilmCharacters
                     filmCharacters={film.characters}
                     people={people}
                     favoritePeople={favoritePeople}
                     planets={planets}
                   />
-                </div>
+                  </Row>
               </Card>
+                </Container>
             </Carousel.Item>
           );
         })}

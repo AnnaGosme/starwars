@@ -1,8 +1,7 @@
 const helpers = {
-  addFav: function addFav(array, fav) {
-    if (!array.includes(fav)) {
-      array.push(fav);
-      console.log("fav", array)
+  addFav: function addFav(array, selected) {
+    if (!array.includes(selected)) {
+      array.push(selected);
       return array;
     }
   },
