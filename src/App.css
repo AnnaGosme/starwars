@@ -6,37 +6,13 @@
   color: #fff;
 }
 
-.App {
+.container {
   text-align: justify;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-}
-
-.poster {
-  border-radius: 10px;
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.container_column {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.carousel-indicators{
-  margin-top: 10px;;
-}
+};
 
 
 

@@ -1,7 +1,7 @@
 const filmPosters = [
   {
     ep: 1,
-    poster: require("../../assets/films/new_hope.jpg"),
+    poster: require("../../assets/films/phantom_menace.jpg"),
     title: "The Phantom Menace",
   },
   {

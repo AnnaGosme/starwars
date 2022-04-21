@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, Button, Carousel, Container, Row, Col } from "react-bootstrap";
 
 import FilmCharacters from "./FilmCharacters";
@@ -8,64 +8,66 @@ import helpers from "../../helpers/helpers";
 
 function FilmContainer({
   planets,
-  filmsArr,
+  // filmsArr,
   favoriteFilms,
   people,
   favoritePeople,
 }) {
   const [index, setIndex] = useState(0);
-  const [favorites, setFavorites] = useState([]);
+  const [films, setFilms] = useState({});
 
-  const handleSelect = (selectedIndex, e) => {
+  useEffect(() => {
+    helpers.fetch("https://swapi.dev/api/films/", setFilms);
+  }, []);
+
+  const filmsArr = Object.values(films);
+
+  const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
 
-  const addToFavorites = (film) => {
-    setFavorites((prevFavourites) => [...prevFavourites, film]);
-    console.log("its work?");
-  };
-
   return (
-    <>
+    <div>
       <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
         {filmsArr.map((film) => {
           return (
-            <Carousel.Item>
-                <Container>
-              <Card body>
-                <Row>
-                  <FilmDescription
-                    filmTitle={film.title}
-                    filmId={film.episode_id}
-                    filmDirector={film.director}
-                    filmCrawl={film.opening_crawl}
-                  />
+            <Carousel.Item data-testid="film">
+              <Container >
+                <Card body>
+                  <Row>
+                    <FilmDescription
+                      filmTitle={film.title}
+                      filmId={film.episode_id}
+                      filmDirector={film.director}
+                      filmCrawl={film.opening_crawl}
+                    />
                   </Row>
                   <Row>
-                    <Col>
-                  <Button
-                    variant="danger"
-                    onClick={() => helpers.addFav(favoriteFilms, film)}
-                  >
-                    Add to Favorites
-                  </Button>
-                  </Col>
+                    <Button
+                      variant="danger"
+                      size="lg"
+                      active
+                      onClick={() => helpers.addFav(favoriteFilms, film)}
+                    >
+                      Add to Favorites
+                    </Button>
                   </Row>
-            <Row>
-                  <FilmCharacters
-                    filmCharacters={film.characters}
-                    people={people}
-                    favoritePeople={favoritePeople}
-                    planets={planets}
-                  />
+                  <Row>
+                    <FilmCharacters
+                      filmCharacters={film.characters}
+                      people={people}
+                      favoritePeople={favoritePeople}
+                      planets={planets}
+                    />
                   </Row>
-              </Card>
-                </Container>
+                </Card>
+              </Container>
             </Carousel.Item>
+       
           );
         })}
       </Carousel>
-    </>
+    </div>
   );
 }
 

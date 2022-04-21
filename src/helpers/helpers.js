@@ -1,4 +1,15 @@
+import axios from "axios";
+
 const helpers = {
+  fetch: async function fetch(url, setRes) {
+    try {
+      const res = await axios.get(url);
+      setRes(res.data.results);
+    } catch (err) {
+      console.log(`Error: ${err}`);
+    }
+  },
+
   addFav: function addFav(array, selected) {
     if (!array.includes(selected)) {
       array.push(selected);

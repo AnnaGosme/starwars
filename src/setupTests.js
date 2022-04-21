@@ -3,3 +3,21 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
+
+
+//MSW config code
+
+
+import { server } from "./components/__mocks__/server";
+
+// Establish API mocking before all tests.
+beforeAll(() => server.listen({
+    onunhandledRequest: 'error'
+}));
+
+// Reset any request handlers that we may add during the tests,
+// so they don't affect other tests.
+afterEach(() => server.resetHandlers());
+
+// Clean up after the tests are finished.
+afterAll(() => server.close());
