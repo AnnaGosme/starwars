@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import { Card, Button, Carousel, Container, Row, Col } from "react-bootstrap";
+import { useState } from "react";
+import { Card, Button, Carousel, Container, Row } from "react-bootstrap";
+import { useAlert } from "react-alert";
 
 import FilmCharacters from "./FilmCharacters";
 import FilmDescription from "./FilmDescription";
@@ -8,19 +9,14 @@ import helpers from "../../helpers/helpers";
 
 function FilmContainer({
   planets,
-  // filmsArr,
+  films,
   favoriteFilms,
   people,
   favoritePeople,
 }) {
   const [index, setIndex] = useState(0);
-  const [films, setFilms] = useState({});
 
-  useEffect(() => {
-    helpers.fetch("https://swapi.dev/api/films/", setFilms);
-  }, []);
-
-  const filmsArr = Object.values(films);
+  const alert = useAlert();
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
@@ -29,10 +25,10 @@ function FilmContainer({
   return (
     <div>
       <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
-        {filmsArr.map((film) => {
+        {films.map((film) => {
           return (
-            <Carousel.Item data-testid="film">
-              <Container >
+            <Carousel.Item data-testid="film" key={film.episode_id}>
+              <Container>
                 <Card body>
                   <Row>
                     <FilmDescription
@@ -47,7 +43,10 @@ function FilmContainer({
                       variant="danger"
                       size="lg"
                       active
-                      onClick={() => helpers.addFav(favoriteFilms, film)}
+                      onClick={() => {
+                        helpers.addFav(favoriteFilms, film);
+                        alert.show(`${film.title} added to Favorites`);
+                      }}
                     >
                       Add to Favorites
                     </Button>
@@ -63,7 +62,6 @@ function FilmContainer({
                 </Card>
               </Container>
             </Carousel.Item>
-       
           );
         })}
       </Carousel>
