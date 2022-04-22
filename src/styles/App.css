@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap");
+* {
+  background-color: black;
+  font-family: 'Didact Gothic', sans-serif;
+  color: #fff;
+}
+
+.container {
+  text-align: justify;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btn-film {
+  color: whitesmoke;
+  background-color: #C03927;
+}
+
+.btn-person {
+  color: black;
+  background-color: #F2EC57;
+}
+/*# sourceMappingURL=App.css.map */

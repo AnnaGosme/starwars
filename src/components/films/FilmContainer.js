@@ -40,8 +40,8 @@ function FilmContainer({
                   </Row>
                   <Row>
                     <Button
-                      variant="danger"
-                      size="lg"
+                      variant="warning"
+                      size="md"
                       active
                       onClick={() => {
                         helpers.addFav(favoriteFilms, film);

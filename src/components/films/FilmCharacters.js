@@ -42,7 +42,8 @@ function FilmCharacters({ filmCharacters, people, favoritePeople, planets }) {
                   Gender: {person.gender}
                   <br></br>
                   <Button
-                    className="button"
+                    variant="danger"
+                    active
                     onClick={() => {
                       helpers.addFav(favoritePeople, person);
                       alert.show(`${person.name} added to Favorites`);

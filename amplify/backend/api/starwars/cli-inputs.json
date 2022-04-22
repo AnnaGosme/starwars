@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/films": {
+      "name": "/films",
+      "lambdaFunction": "femtasystarwars4a421805",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

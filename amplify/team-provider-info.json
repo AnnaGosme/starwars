@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-femtasystarwars-dev-115220-authRole",
+      "UnauthRoleArn": "arn:aws:iam::157563059962:role/amplify-femtasystarwars-dev-115220-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::157563059962:role/amplify-femtasystarwars-dev-115220-authRole",
+      "Region": "eu-west-3",
+      "DeploymentBucketName": "amplify-femtasystarwars-dev-115220-deployment",
+      "UnauthRoleName": "amplify-femtasystarwars-dev-115220-unauthRole",
+      "StackName": "amplify-femtasystarwars-dev-115220",
+      "StackId": "arn:aws:cloudformation:eu-west-3:157563059962:stack/amplify-femtasystarwars-dev-115220/e86cb370-c221-11ec-af83-0e6bd09aea00",
+      "AmplifyAppId": "d1afhjjb1v6qp5"
+    },
+    "categories": {
+      "function": {
+        "femtasystarwars4a421805": {
+          "deploymentBucketName": "amplify-femtasystarwars-dev-115220-deployment",
+          "s3Key": "amplify-builds/femtasystarwars4a421805-7a332b71714b64524e77-build.zip"
+        }
+      }
+    }
+  }
+}

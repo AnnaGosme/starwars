@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Container, Spinner } from "react-bootstrap";
 
-import "./App.css";
+import "./styles/App.css";
 import NavBar from "./NavBar";
 import FilmContainer from "./components/films/FilmContainer";
 import FavoriteCharacters from "./components/favorites/FavoriteCharacters";
