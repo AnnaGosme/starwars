@@ -1,71 +1,34 @@
-# Getting Started with Create React App
+# Femtasy-Starwars
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Landing Page] (public/LandingPage.jpg)
+![Favorite Films Page] (public/favoriteFilms.jpg)
+![Favorite Characters Page] (public/favoriteCharacters.jpg)
 
-## Available Scripts
+Femtasy-Starwars is a React app fetching data from the SWAPI API to display the Star Wars films and their characters. The app was designed with a *mobile first* approach.
 
-In the project directory, you can run:
+For each film, discover the director's name, an associated film poster, and the film's characters.
 
-### `npm start`
+Learn more about each character by clicking on their name. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Films and characters can be added to a list of favorites and reviewed individually.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Femtasy-Starwars is deployed on AWS, visit the deployed version [here](http://femtasystarwars-20220422115520-hostingbucket-dev.s3-website.eu-west-3.amazonaws.com/).
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Use the package manager [npm](https://www.npmjs.com/) to install Femtasy-Starwars.
 
-### `npm run build`
+```bash
+npm install femtasy-starwars
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies
+Created using create-react-app.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Styled with React-Bootstrap and a sprinkle of Sass. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Tests
+Tested with Jest, React Testing Library and Mock Service Worker. 
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# femtasy_starwars
+## License
+Made for educational purposes only.
